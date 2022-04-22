@@ -14,14 +14,15 @@ const App = () => (
         <ResetStyle />
         <GlobalStyle />
         <Form title="Register">
-            <Input label="First Name:" type="text" name="fristName"/>
-            <Input label="Last Name:" type="text" name="lastName"/>
-            <Input label="Email:" type="email" name="email"/>
-            <Input label="Password:" type="password" name="password"/>
+            <Input label="First Name:" type="text" name="fristName" />
+            <Input label="Last Name:" type="text" name="lastName" />
+            <Input label="Email:" type="email" name="email" />
+            <Input label="Password:" type="password" name="password" />
             <Checkbox label="I agree to the terms and conditions" type="checkbox" name="checkbox"/>
             <Button type="submit" >Go Ahead</Button>
         </Form>
     </>
-);
+    )
+
 
 export default App;

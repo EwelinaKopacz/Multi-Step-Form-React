@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-family: Verdana, Tahoma, sans-serif;
-        background: #dde1e7;
+        background: #F5F5F5;
         /* font-size: 1.6rem; */
     }
 `;

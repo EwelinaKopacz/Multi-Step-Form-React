@@ -14,6 +14,12 @@ const StyledButton = styled.button`
     border-radius: 25px;
     box-shadow: 2px 2px 5px #babecc,
                 -5px -5px 10px #ffffff73;
+
+    &:hover {
+        box-shadow: inset 2px 2px 5px #babecc,
+                    inset -1px -1px 2px #ffffff73;
+
+    }
 `;
 
 export default StyledButton;

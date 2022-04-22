@@ -13,17 +13,29 @@ const CheckboxLabel = styled.p`
 `;
 
 const CheckboxInput = styled.input`
-    /* appearance: none; */
-    margin: 0;
-    background-color: #dde1e7;
+    appearance: none;
     width: 20px;
     height:20px;
+    cursor:pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
     background: linear-gradient(145deg, #c7cbd0, #ecf1f7);
-    box-shadow:  23px 23px 100px #5f6163,
-             -23px -23px 100px #ffffff;
+    box-shadow: ${(props)=> props.value ? 'inset 2px 2px 5px #babecc,inset -1px -1px 2px #ffffff73' : '5px 5px 10px #585a5c'};
+    &:after {
+        content:"\f00c";
+        font-family:"Font Awesome 5 Free";
+        font-weight: 900;
+        font-size:16px;
+        color:${(props) => props.value ? '#355E3B' : 'white'};
+        display:${(props) => props.value ? 'block' : 'none'};
+    }
 
+    &:hover {
+        box-shadow: inset 2px 2px 5px #babecc,
+                    inset -1px -1px 2px #ffffff73;
+    }
 `;
-
 
 export {CheckboxWrapper,CheckboxLabel,CheckboxInput};
