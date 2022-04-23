@@ -1,0 +1,36 @@
+{   "inputsStep1": [
+
+        {
+            "id":1,
+            "name":"firstName",
+            "type":"text",
+            "label":"First Name:",
+            "required":"true",
+            "pattern":"^[a-zA-Z]{2,30}$"
+        },
+        {
+            "id":2,
+            "name":"lastName",
+            "type":"text",
+            "label":"Last Name:",
+            "required":"true",
+            "pattern":"^[a-zA-Z]{2,30}$"
+        },
+        {
+           " id":3,
+            "name":"email",
+            "type":"email",
+            "label":"Email:",
+            "required":"true",
+            "pattern":"^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$"
+        },
+        {
+            "id":4,
+            "name":"password",
+            "type":"password",
+            "label":"Password:",
+            "required":"true",
+            "patter":"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
+        }
+    ]
+}

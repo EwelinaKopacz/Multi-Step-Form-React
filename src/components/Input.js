@@ -1,21 +1,17 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/function-component-definition */
-import React,{useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledInputDiv,StyledInputField,StyledLabel} from './styled/Input.styled';
 
-// eslint-disable-next-line arrow-body-style
 const Input = (props) => {
-    const {type,label,name} = props;
-
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const {type,label,value,onChange,errorMessage,...inputProps} = props;
 
     return (
         <StyledInputDiv>
             <StyledLabel htmlFor={type}>{label}</StyledLabel>
-            <StyledInputField type={type} name={name} onChange={e=>setFirstName(e.target.value)}/>
+            <StyledInputField {...inputProps} onChange={(e)=> onChange(e.target.name,e.target.value)}/>
+            <span>{errorMessage}</span>
         </StyledInputDiv>
     )
 }
@@ -26,4 +22,7 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange:PropTypes.func.isRequired,
+    errorMessage:PropTypes.string.isRequired
 }

@@ -1,21 +1,15 @@
 /* eslint-disable react/function-component-definition */
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {CheckboxWrapper,CheckboxLabel,CheckboxInput} from './styled/Checkbox.styled';
 
 const Checkbox = (props)=>{
-    const {type,name,label}=props;
-    const [checked, setChecked] = useState(false);
-    const handleChange =()=> setChecked(!checked)
-
-    useEffect(()=>{
-        setChecked(false)
-    },[])
+    const {type,name,label,value,onChange}=props;
 
     return (
         <CheckboxWrapper>
             <CheckboxLabel>{label}</CheckboxLabel>
-            <CheckboxInput type={type} name={name} value={checked} onChange={handleChange}/>
+            <CheckboxInput type={type} name={name} value={value} onChange={onChange}/>
         </CheckboxWrapper>
     )
 }
@@ -26,4 +20,6 @@ Checkbox.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    value: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
 }
