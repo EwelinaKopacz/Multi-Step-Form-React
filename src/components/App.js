@@ -1,8 +1,10 @@
-/* eslint-disable no-useless-escape */
+
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/function-component-definition */
 
 import React,{useState,useReducer} from 'react';
+import formValidation from './fromValidation';
+import inputsStep1 from './data/inputsStep1.json';
 
 import ResetStyle from './styled/Reset';
 import GlobalStyle from './styled/Global';
@@ -26,50 +28,12 @@ const reducer = (state,action) => {
     return {...state, [type]:value}
 }
 
-const inputsStep1 = [
-
-    {
-        id:1,
-        name:"firstName",
-        type:"text",
-        label:"First Name:",
-        required:true,
-        pattern:"^[a-zA-Z]{2,30}$",
-        errorMessage: "Invalid First name"
-    },
-    {
-        id:2,
-        name:"lastName",
-        type:"text",
-        label:"Last Name:",
-        required:true,
-        pattern:"^[a-zA-Z]{2,30}$",
-        errorMessage: "Invalid Last name"
-    },
-    {
-        id:3,
-        name:"email",
-        type:"email",
-        label:"Email:",
-        required:true,
-        pattern:"^[-\w.]+@([-\w]+\.)+[a-z]+$",
-        errorMessage: "Invalid Email"
-    },
-    {
-        id:4,
-        name:"password",
-        type:"password",
-        label:"Password:",
-        required:true,
-        patter:"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$",
-        errorMessage: "Invalid Password"
-    }
-]
-
 const App = () => {
-    const [checked, setChecked] = useState(false);
-    const handleCheckbox =()=> setChecked(!checked)
     const [state, dispatch] = useReducer(reducer,init);
+    const [errors, setErrors] = useState({});
+    const [checked, setChecked] = useState(false);
+
+    const handleCheckbox =()=> setChecked(!checked)
 
     const handleInputs = (nameInput,valueInput)=> {
         const action = {
@@ -79,25 +43,30 @@ const App = () => {
         dispatch(action)
     }
 
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        setErrors(formValidation(state,inputsStep1))
+    }
+
     return (
         <>
             <ResetStyle />
             <GlobalStyle />
-            <Form title="Register">
+            <Form title="Register" onSubmit={handleSubmit}>
                 {inputsStep1.map((input) => (
                     <Input
                         key={input.id}
                         {...input}
                         value={state[input.name]}
+                        error={errors[input.name]}
                         onChange={handleInputs}
                     />
                 ))}
                 <Checkbox label="I agree to the terms and conditions" value={checked} type="checkbox" name="checkbox" onChange={handleCheckbox} />
-                <Button type="submit" >Go Ahead</Button>
+                <Button>Go Ahead</Button>
             </Form>
         </>
     )
 }
-
 
 export default App;

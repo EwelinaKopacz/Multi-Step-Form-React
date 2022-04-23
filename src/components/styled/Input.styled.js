@@ -7,7 +7,7 @@ const StyledInputDiv = styled.div`
 `;
 
 const StyledErrors = styled.p`
-    display:none;
+    display:block;
     color:red;
     padding:5px;
     font-size: 1.3rem;
@@ -25,11 +25,11 @@ const StyledInputField = styled.input`
 
     &:focus{
         box-shadow: inset 2px 2px 5px #babecc,
-              inset -1px -1px 2px #ffffff73;
+                    inset -1px -1px 2px #ffffff73;
     }
-    &:invalid ~ ${StyledErrors} {
+    /* &:invalid ~ ${StyledErrors} {
         display: ${(props)=>props.focused ? 'block' : 'none'};
-    }
+    } */
 `;
 
 const StyledLabel = styled.label`

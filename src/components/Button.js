@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import StyledButton from './styled/Button.styled';
 
 const Button = (props)=> {
-    const {children,type} = props;
+    const {children} = props;
     return (
-        <StyledButton type={type}>{children}</StyledButton>
+        <StyledButton>{children}</StyledButton>
     )
 }
 
@@ -14,5 +14,4 @@ export default Button;
 
 Button.propTypes = {
     children: PropTypes.node.isRequired,
-    type: PropTypes.string.isRequired
 }

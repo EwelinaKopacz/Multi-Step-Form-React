@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import { StyledForm, StyledFormTitle,StyledFormDiv} from './styled/Form.styled';
 
 const Form = (props) => {
-    const {title,children} = props;
+    const {title,children,onSubmit} = props;
     return (
         <section>
-            <StyledForm noValidate>
+            <StyledForm noValidate onSubmit={onSubmit}>
                 <StyledFormTitle>
                     {title}
                 </StyledFormTitle>
@@ -24,5 +24,6 @@ export default Form;
 
 Form.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    onSubmit: PropTypes.func.isRequired
 }
