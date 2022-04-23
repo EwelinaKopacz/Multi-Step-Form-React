@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 const CheckboxWrapper = styled.div `
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 55%;
+    margin:3.5px 0;
+    padding-left: 8px;
 `;
 
 const CheckboxLabel = styled.p`

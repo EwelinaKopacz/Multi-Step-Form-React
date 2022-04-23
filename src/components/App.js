@@ -52,7 +52,7 @@ const inputsStep1 = [
         type:"email",
         label:"Email:",
         required:true,
-        pattern:"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$",
+        pattern:"^[-\w.]+@([-\w]+\.)+[a-z]+$",
         errorMessage: "Invalid Email"
     },
     {
@@ -61,17 +61,17 @@ const inputsStep1 = [
         type:"password",
         label:"Password:",
         required:true,
-        patter:"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+        patter:"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$",
         errorMessage: "Invalid Password"
     }
 ]
 
 const App = () => {
     const [checked, setChecked] = useState(false);
-    const handlerCheckbox =()=> setChecked(!checked)
+    const handleCheckbox =()=> setChecked(!checked)
     const [state, dispatch] = useReducer(reducer,init);
 
-    const handlerInputs = (nameInput,valueInput)=> {
+    const handleInputs = (nameInput,valueInput)=> {
         const action = {
             type: nameInput,
             value: valueInput,
@@ -89,10 +89,10 @@ const App = () => {
                         key={input.id}
                         {...input}
                         value={state[input.name]}
-                        onChange={handlerInputs}
+                        onChange={handleInputs}
                     />
                 ))}
-                <Checkbox label="I agree to the terms and conditions" value={checked} type="checkbox" name="checkbox" onChange={handlerCheckbox} />
+                <Checkbox label="I agree to the terms and conditions" value={checked} type="checkbox" name="checkbox" onChange={handleCheckbox} />
                 <Button type="submit" >Go Ahead</Button>
             </Form>
         </>

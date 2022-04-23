@@ -8,7 +8,7 @@ const Form = (props) => {
     const {title,children} = props;
     return (
         <section>
-            <StyledForm>
+            <StyledForm noValidate>
                 <StyledFormTitle>
                     {title}
                 </StyledFormTitle>

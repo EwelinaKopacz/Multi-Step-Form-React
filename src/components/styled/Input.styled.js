@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
 const StyledInputDiv = styled.div`
-    height: 40px;
     width: 55%;
     display: flex;
-    position: relative;
-    margin:15px 0;
+    flex-direction: column;
+`;
+
+const StyledErrors = styled.p`
+    display:none;
+    color:red;
+    padding:5px;
+    font-size: 1.3rem;
 `;
 
 const StyledInputField = styled.input`
-    height: 100%;
-    width: 100%;
-    padding-left: 45px;
+    padding: 9px;
     font-size: 18px;
-    outline: none;
     border: none;
     color: #595959;
     background: #dde1e7;
@@ -25,17 +27,15 @@ const StyledInputField = styled.input`
         box-shadow: inset 2px 2px 5px #babecc,
               inset -1px -1px 2px #ffffff73;
     }
-
+    &:invalid ~ ${StyledErrors} {
+        display: ${(props)=>props.focused ? 'block' : 'none'};
+    }
 `;
 
 const StyledLabel = styled.label`
-    position: absolute;
-    top: -25%;
-    left: 20px;
-    pointer-events: none;
     color: #666666;
-    transform: translateY(-50%);
     font-size:1.5rem;
+    padding: 4px 0 4px 8px;
 `;
 
-export {StyledInputDiv,StyledInputField,StyledLabel };
+export {StyledInputDiv,StyledInputField,StyledLabel,StyledErrors };
