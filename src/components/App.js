@@ -33,7 +33,7 @@ const App = () => {
     const [errors, setErrors] = useState({});
     const [checked, setChecked] = useState(false);
 
-    const handleCheckbox =()=> setChecked(!checked)
+    const handleCheckbox = () => setChecked(!checked)
 
     const handleInputs = (nameInput,valueInput)=> {
         const action = {
@@ -43,9 +43,12 @@ const App = () => {
         dispatch(action)
     }
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
+    const handleBlur = () => {
         setErrors(formValidation(state,inputsStep1))
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
     }
 
     return (
@@ -60,6 +63,7 @@ const App = () => {
                         value={state[input.name]}
                         error={errors[input.name]}
                         onChange={handleInputs}
+                        onBlur={handleBlur}
                     />
                 ))}
                 <Checkbox label="I agree to the terms and conditions" value={checked} type="checkbox" name="checkbox" onChange={handleCheckbox} />

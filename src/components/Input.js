@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { StyledInputDiv,StyledInputField,StyledLabel,StyledErrors} from './styled/Input.styled';
 
 const Input = (props) => {
-    const {type,label,onChange,error, ...inputProps} = props;
+    const {type,label,onChange,error,onBlur, ...inputProps} = props;
 
     return (
         <StyledInputDiv>
@@ -13,6 +13,7 @@ const Input = (props) => {
             <StyledInputField
                 {...inputProps}
                 onChange={(e)=> onChange(e.target.name,e.target.value)}
+                onBlur={onBlur}
             />
             <StyledErrors>{error}</StyledErrors>
         </StyledInputDiv>
@@ -26,6 +27,7 @@ Input.propTypes = {
     label: PropTypes.string.isRequired,
     error: PropTypes.string,
     onChange:PropTypes.func.isRequired,
+    onBlur:PropTypes.func.isRequired,
 }
 
 Input.defaultProps = {
