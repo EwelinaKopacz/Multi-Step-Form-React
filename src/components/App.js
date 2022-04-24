@@ -32,6 +32,7 @@ const App = () => {
     const [state, dispatch] = useReducer(reducer,init);
     const [errors, setErrors] = useState({});
     const [checked, setChecked] = useState(false);
+    const [checkboxError,setCheckboxError] = useState('');
 
     const handleCheckbox = () => setChecked(!checked)
 
@@ -47,8 +48,19 @@ const App = () => {
         setErrors(formValidation(state,inputsStep1))
     }
 
+    const checkCheckbox = (checkboxValue) => {
+        if(!checkboxValue){
+            setCheckboxError('You have to accept terms')
+        }
+        else {
+            setCheckboxError('')
+        }
+    }
+
     const handleSubmit = (e) =>{
         e.preventDefault();
+        setErrors(formValidation(state,inputsStep1))
+        checkCheckbox(checked);
     }
 
     return (
@@ -66,7 +78,10 @@ const App = () => {
                         onBlur={handleBlur}
                     />
                 ))}
-                <Checkbox label="I agree to the terms and conditions" value={checked} type="checkbox" name="checkbox" onChange={handleCheckbox} />
+                <Checkbox label="I agree to the terms and conditions"
+                    value={checked} type="checkbox" name="checkbox"
+                    onChange={handleCheckbox}
+                    error={checkboxError} />
                 <Button>Go Ahead</Button>
             </Form>
         </>

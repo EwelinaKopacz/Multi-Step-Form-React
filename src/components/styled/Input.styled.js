@@ -27,9 +27,6 @@ const StyledInputField = styled.input`
         box-shadow: inset 2px 2px 5px #babecc,
                     inset -1px -1px 2px #ffffff73;
     }
-    /* &:invalid ~ ${StyledErrors} {
-        display: ${(props)=>props.focused ? 'block' : 'none'};
-    } */
 `;
 
 const StyledLabel = styled.label`

@@ -7,6 +7,7 @@ const CheckboxWrapper = styled.div `
     width: 55%;
     margin:3.5px 0;
     padding-left: 8px;
+    position: relative;
 `;
 
 const CheckboxLabel = styled.p`
@@ -40,4 +41,15 @@ const CheckboxInput = styled.input`
     }
 `;
 
-export {CheckboxWrapper,CheckboxLabel,CheckboxInput};
+const StyledErrors = styled.p`
+    color:red;
+    padding:5px;
+    font-size: 1.3rem;
+    position: absolute;
+    bottom:-120%;
+    left:1%;
+
+`;
+
+
+export {CheckboxWrapper,CheckboxLabel,CheckboxInput,StyledErrors};
