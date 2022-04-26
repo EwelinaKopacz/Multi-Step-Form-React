@@ -1,0 +1,31 @@
+[
+    {
+        "id":11,
+        "name":"street",
+        "type":"text",
+        "label":"Street and Number:",
+        "required":"true"
+    },
+    {
+        "id":12,
+        "name":"zip",
+        "type":"text",
+        "label":"Zip Code:",
+        "pattern":"^[0-9]{2}-[0-9]{3}$",
+        "required":"true"
+    },
+    {
+        "id": 13,
+        "name":"city",
+        "type":"text",
+        "label":"City",
+        "required":"true"
+    },
+    {
+        "id": 14,
+        "name":"country",
+        "type":"text",
+        "label":"Country",
+        "required":"true"
+    }
+]

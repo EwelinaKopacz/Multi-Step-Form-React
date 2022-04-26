@@ -1,40 +1,53 @@
-
-/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable consistent-return */
 /* eslint-disable react/function-component-definition */
 
-import React,{useState,useReducer} from 'react';
-import formValidation from './fromValidation';
-import inputsStep1 from './data/inputsStep1.json';
-
-import ResetStyle from './styled/Reset';
-import GlobalStyle from './styled/Global';
-import Form from './Form';
-import Input from './Input';
-import Button from './Button';
-import Checkbox from './Checkbox';
-
-const init = {
-    firstName:'',
-    lastName:'',
-    email:'',
-    password:'',
-}
-
-const reducer = (state,action) => {
-    const {type, value} = action;
-    if(type === 'resetInputs'){
-        return value
-    }
-    return {...state, [type]:value}
-}
+import React,{useState,useReducer, useEffect} from 'react';
+import StepOne from './Forms/StepOne';
+import StepTwo from './Forms/StepTwo';
+import StepThree from './Forms/StepThree';
+import ProgressBar from './ProgresBar';
 
 const App = () => {
-    const [state, dispatch] = useReducer(reducer,init);
-    const [errors, setErrors] = useState({});
-    const [checked, setChecked] = useState(false);
-    const [checkboxError,setCheckboxError] = useState('');
+    const initState = {
+        step: 1,
+        firstName:'',
+        lastName:'',
+        email:'',
+        password:'',
+        gender:'',
+        birthday:'',
+        phone:'',
+        menFashion: ``,
+        womenFashion: ``,
+        childFashion: ``,
+        street:``,
+        zip:``,
+        city:``,
+        country:``,
+    }
 
-    const handleCheckbox = () => setChecked(!checked)
+    const reducer = (state,action) => {
+        const {type, value} = action;
+        return {...state, [type]:value}
+    }
+
+    const [step, setStep] = useState(1);
+    const [state, dispatch] = useReducer(reducer,initState);
+    const [completed, setCompleted] = useState(0)
+
+    // jak sie zabezpieczyc przed ponownym dodaniem jak klikniemy w button prev state
+    useEffect(()=>{
+        if(step === 1){
+            setCompleted(completed)
+        }
+        if(step === 2){
+            setCompleted(completed + 40)
+        }
+        if(step === 3){
+            setCompleted(completed + 40)
+        }
+    },[step])
 
     const handleInputs = (nameInput,valueInput)=> {
         const action = {
@@ -44,48 +57,48 @@ const App = () => {
         dispatch(action)
     }
 
-    const handleBlur = () => {
-        setErrors(formValidation(state,inputsStep1))
-    }
+    const nextStep = () => setStep(step + 1);
 
-    const checkCheckbox = (checkboxValue) => {
-        if(!checkboxValue){
-            setCheckboxError('You have to accept terms')
-        }
-        else {
-            setCheckboxError('')
-        }
-    }
+    const prevStep = () => setStep(step - 1);
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        setErrors(formValidation(state,inputsStep1))
-        checkCheckbox(checked);
+    switch (step) {
+    case 1:
+        return (
+            <>
+                <ProgressBar value={completed} max={100}/>
+                <StepOne
+                    onChange={handleInputs}
+                    nextStep={nextStep}
+                    state={state}
+                />
+            </>
+        )
+    case 2:
+        return (
+            <>
+                <ProgressBar value={completed} max={100}/>
+                <StepTwo
+                    onChange={handleInputs}
+                    prevStep={prevStep}
+                    nextStep={nextStep}
+                    state={state}
+                />
+            </>
+        )
+    case 3:
+        return (
+            <>
+                <ProgressBar value={completed} max={100}/>
+                <StepThree
+                    onChange={handleInputs}
+                    prevStep={prevStep}
+                    state={state}
+                />
+            </>
+        )
+    default:
     }
-
-    return (
-        <>
-            <ResetStyle />
-            <GlobalStyle />
-            <Form title="Register" onSubmit={handleSubmit}>
-                {inputsStep1.map((input) => (
-                    <Input
-                        key={input.id}
-                        {...input}
-                        value={state[input.name]}
-                        error={errors[input.name]}
-                        onChange={handleInputs}
-                        onBlur={handleBlur}
-                    />
-                ))}
-                <Checkbox label="I agree to the terms and conditions"
-                    value={checked} type="checkbox" name="checkbox"
-                    onChange={handleCheckbox}
-                    error={checkboxError} />
-                <Button>Go Ahead</Button>
-            </Form>
-        </>
-    )
 }
+
 
 export default App;
