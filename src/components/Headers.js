@@ -11,6 +11,6 @@ const Headers = (props) => {
 
 export default Headers;
 
-Headers.protoTypes = {
+Headers.propTypes = {
     headerH3: PropTypes.string.isRequired,
 };

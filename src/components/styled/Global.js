@@ -11,6 +11,12 @@ const GlobalStyle = createGlobalStyle`
         background: #F5F5F5;
         /* font-size: 1.6rem; */
     }
+    #root {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export default GlobalStyle;

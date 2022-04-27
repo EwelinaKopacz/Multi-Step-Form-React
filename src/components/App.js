@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/function-component-definition */
 
-import React,{useState,useReducer, useEffect} from 'react';
+import React,{useState,useReducer} from 'react';
 import StepOne from './Forms/StepOne';
 import StepTwo from './Forms/StepTwo';
 import StepThree from './Forms/StepThree';
@@ -34,20 +34,6 @@ const App = () => {
 
     const [step, setStep] = useState(1);
     const [state, dispatch] = useReducer(reducer,initState);
-    const [completed, setCompleted] = useState(0)
-
-    // jak sie zabezpieczyc przed ponownym dodaniem jak klikniemy w button prev state
-    useEffect(()=>{
-        if(step === 1){
-            setCompleted(completed)
-        }
-        if(step === 2){
-            setCompleted(completed + 40)
-        }
-        if(step === 3){
-            setCompleted(completed + 40)
-        }
-    },[step])
 
     const handleInputs = (nameInput,valueInput)=> {
         const action = {
@@ -65,7 +51,7 @@ const App = () => {
     case 1:
         return (
             <>
-                <ProgressBar value={completed} max={100}/>
+                <ProgressBar step={step}/>
                 <StepOne
                     onChange={handleInputs}
                     nextStep={nextStep}
@@ -76,7 +62,7 @@ const App = () => {
     case 2:
         return (
             <>
-                <ProgressBar value={completed} max={100}/>
+                <ProgressBar step={step}/>
                 <StepTwo
                     onChange={handleInputs}
                     prevStep={prevStep}
@@ -88,7 +74,7 @@ const App = () => {
     case 3:
         return (
             <>
-                <ProgressBar value={completed} max={100}/>
+                <ProgressBar step={step}/>
                 <StepThree
                     onChange={handleInputs}
                     prevStep={prevStep}

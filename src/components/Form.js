@@ -2,20 +2,21 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledForm, StyledFormTitle,StyledFormDiv} from './styled/Form.styled';
+import { StyledFormWrapper,StyledInputsContainer} from './styled/Form.styled';
+import {HeadersStyledH1} from './styled/HeaderStyled'
 
 const Form = (props) => {
     const {title,children,onSubmit} = props;
     return (
         <section>
-            <StyledForm noValidate onSubmit={onSubmit}>
-                <StyledFormTitle>
+            <StyledFormWrapper noValidate onSubmit={onSubmit}>
+                <HeadersStyledH1>
                     {title}
-                </StyledFormTitle>
-                <StyledFormDiv>
+                </HeadersStyledH1>
+                <StyledInputsContainer>
                     {children}
-                </StyledFormDiv>
-            </StyledForm>
+                </StyledInputsContainer>
+            </StyledFormWrapper>
         </section>
     )
 }

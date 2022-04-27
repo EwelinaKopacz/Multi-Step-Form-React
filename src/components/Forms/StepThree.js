@@ -53,4 +53,5 @@ export default StepThree;
 
 StepThree.propTypes = {
     onChange:PropTypes.func.isRequired,
+    prevStep:PropTypes.func.isRequired,
 }

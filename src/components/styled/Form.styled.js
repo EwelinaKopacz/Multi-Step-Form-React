@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledForm = styled.form`
+const StyledFormWrapper = styled.form`
     display: block;
     width:60vw;
     margin: 30px auto;
@@ -11,16 +11,7 @@ const StyledForm = styled.form`
                 2px 2px 5px rgba(94, 104, 121, 0.288);
 `;
 
-const StyledFormTitle = styled.h1`
-    font-size:2rem;
-    width: 20vw;
-    min-height: 10vh;
-    padding:15px 5px;
-    margin: 0 auto;
-    text-align: center;
-`;
-
-const StyledFormDiv = styled.div`
+const StyledInputsContainer = styled.div`
     display:flex;
     flex-direction:column;
     justify-content: center;
@@ -37,4 +28,4 @@ const StyledFormDiv = styled.div`
                 inset 0px 0px 4px rgba(255, 255, 255,.2);
 `;
 
-export {StyledForm,StyledFormTitle,StyledFormDiv};
+export {StyledFormWrapper,StyledInputsContainer};

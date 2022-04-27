@@ -6,7 +6,7 @@ import {StyledButton} from './styled/Button.styled';
 const Button = (props)=> {
     const {children,onClick,disabled,type} = props;
     return (
-        <StyledButton type={type} onClick={onClick}disabled={disabled}>{children}</StyledButton>
+        <StyledButton type={type} onClick={onClick} disabled={disabled}>{children}</StyledButton>
     )
 }
 

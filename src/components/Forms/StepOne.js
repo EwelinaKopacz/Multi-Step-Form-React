@@ -51,8 +51,9 @@ const StepOne = (props) => {
     // console.log('checked', checked)
     // console.log('disabled',isDisabled)
 
-    // tu jest problem bo jak naciśnie nextStep z zaznaczonym tylko checkbox to go przepuści, co jest zgodne z tym co nizje bo tablica obiektow errors jest pusta
+    // tu jest problem bo jak naciśne nextStep z zaznaczonym tylko checkbox to mnie przepuści, co jest zgodne z tym co nizej bo tablica obiektow errors jest pusta
     // kolejny problem jak zaznacze checkbox - button robi sie disabled=false, a ponowne odznaczenie checbox nie powoduje ze button robi sie disabled=true
+    // nie potrafie sobie z tym poradzic
 
     return (
         <Form title="Register" onSubmit={handleSubmit}>
@@ -81,4 +82,5 @@ export default StepOne;
 
 StepOne.propTypes = {
     onChange:PropTypes.func.isRequired,
+    nextStep:PropTypes.func.isRequired,
 }

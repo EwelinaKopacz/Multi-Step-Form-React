@@ -2,7 +2,8 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledInputRadioDiv,StyledInputField,StyledLabel,StyledInputRadioField,StyledInputRadioLegend,StyledInputRadio,StyledInputRadioIndicator } from './styled/InputRadio.styled';
+import { StyledInputRadioContainer,StyledInputRadioField,StyledInputRadioLegend,StyledInputRadioWrapper} from './styled/InputRadio.styled';
+import { StyledInputLabel} from './styled/Input.styled';
 
 const InputRadio = (props) => {
     const {type,label,onChange,value,name, ...inputProps} = props;
@@ -11,27 +12,27 @@ const InputRadio = (props) => {
         return (
             <StyledInputRadioField>
                 <StyledInputRadioLegend>Gender:</StyledInputRadioLegend>
-                <StyledInputRadio>
-                    <StyledLabel> Male</StyledLabel>
+                <StyledInputRadioWrapper>
+                    <StyledInputLabel> Male</StyledInputLabel>
                     <input type='radio' name={name} value='male' onChange={(e)=> onChange(e.target.name,e.target.value)}/>
-                </StyledInputRadio>
-                <StyledInputRadio>
-                    <StyledLabel> Female</StyledLabel>
+                </StyledInputRadioWrapper>
+                <StyledInputRadioWrapper>
+                    <StyledInputLabel> Female</StyledInputLabel>
                     <input type='radio' name={name} value='female' onChange={(e)=> onChange(e.target.name,e.target.value)}/>
-                </StyledInputRadio>
+                </StyledInputRadioWrapper>
             </StyledInputRadioField>
         )
     }
     return (
-        <StyledInputRadioDiv>
-            <StyledLabel htmlFor={type}>{label}</StyledLabel>
+        <StyledInputRadioContainer>
+            <StyledInputLabel htmlFor={type}>{label}</StyledInputLabel>
             <input
                 {...inputProps}
                 onChange={(e)=> onChange(e.target.name,e.target.value)}
                 type={type}
                 name={name}
             />
-        </StyledInputRadioDiv>
+        </StyledInputRadioContainer>
     )
 }
 

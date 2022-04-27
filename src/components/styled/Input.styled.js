@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const StyledInputDiv = styled.div`
+const StyledInputWrapper = styled.div`
     width: 55%;
     display: flex;
     flex-direction: column;
 `;
 
-const StyledErrors = styled.p`
+const StyledInputErrors = styled.p`
     display:block;
     color:red;
     padding:5px;
@@ -30,10 +30,10 @@ const StyledInputField = styled.input`
 `;
 
 
-const StyledLabel = styled.label`
+const StyledInputLabel = styled.label`
     color: #666666;
     font-size:1.5rem;
     padding: 4px 0 4px 8px;
 `;
 
-export {StyledInputDiv,StyledInputField,StyledLabel,StyledErrors };
+export {StyledInputWrapper,StyledInputField,StyledInputLabel,StyledInputErrors };

@@ -2,22 +2,22 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledInputDiv,StyledInputField,StyledLabel,StyledErrors} from './styled/Input.styled';
+import { StyledInputWrapper,StyledInputField,StyledInputLabel,StyledInputErrors} from './styled/Input.styled';
 
 const Input = (props) => {
-    const {type,label,value,disabled,onChange,error,onBlur, ...inputProps} = props;
+    const {type,label,value,onChange,error,onBlur, ...inputProps} = props;
 
     return (
-        <StyledInputDiv>
-            <StyledLabel htmlFor={type}>{label}</StyledLabel>
+        <StyledInputWrapper>
+            <StyledInputLabel htmlFor={type}>{label}</StyledInputLabel>
             <StyledInputField
                 {...inputProps}
                 onChange={(e)=> onChange(e.target.name,e.target.value)}
                 onBlur={onBlur}
                 type={type}
             />
-            <StyledErrors>{error}</StyledErrors>
-        </StyledInputDiv>
+            <StyledInputErrors>{error}</StyledInputErrors>
+        </StyledInputWrapper>
     )
 }
 
@@ -29,7 +29,6 @@ Input.propTypes = {
     error: PropTypes.string,
     onChange:PropTypes.func.isRequired,
     onBlur:PropTypes.func.isRequired,
-    disabled:PropTypes.bool.isRequired,
     value:PropTypes.string.isRequired
 }
 
