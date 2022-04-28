@@ -4,14 +4,13 @@
 /* eslint-disable react/function-component-definition */
 import React,{useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
-import formValidation from '../fromValidation';
+import formValidation from '../Function/fromValidation';
 import inputsStep1 from '../../data/inputsStep1.json';
 
-import Form from '../Form';
-import Input from '../Input';
-import Button from '../Button';
-import Checkbox from '../Checkbox';
-
+import Form from '../Forms Elements/Form';
+import Button from '../Forms Elements/Button';
+import Input from '../Forms Elements/Input';
+import Checkbox from '../Forms Elements/Checkbox';
 
 const StepOne = (props) => {
     const {onChange,nextStep,state} = props;
@@ -83,4 +82,21 @@ export default StepOne;
 StepOne.propTypes = {
     onChange:PropTypes.func.isRequired,
     nextStep:PropTypes.func.isRequired,
+    state:PropTypes.shape({
+        step: PropTypes.number,
+        firstName: PropTypes.string,
+        astName:PropTypes.string,
+        email:PropTypes.string,
+        password:PropTypes.string,
+        gender:PropTypes.string,
+        birthday:PropTypes.string,
+        phone:PropTypes.string,
+        menFashion: PropTypes.string,
+        womenFashion: PropTypes.string,
+        childFashion: PropTypes.string,
+        street:PropTypes.string,
+        zip:PropTypes.string,
+        city:PropTypes.string,
+        country:PropTypes.string,
+    }).isRequired
 }

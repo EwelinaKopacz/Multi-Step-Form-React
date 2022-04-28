@@ -7,14 +7,15 @@ import React,{useState,useEffect} from 'react';
 // import Select from 'react-select';
 import PropTypes from 'prop-types';
 import inputsStep2 from '../../data/inputsStep2.json'
-import formValidation from '../fromValidation';
+import formValidation from '../Function/fromValidation';
 import {StyledButtonWrapper} from '../styled/Button.styled'
 
-import Form from '../Form';
-import Input from '../Input';
-import Button from '../Button';
-import InputRadio from '../InputRadio';
-import Headers from '../Headers';
+import Form from '../Forms Elements/Form';
+import Button from '../Forms Elements/Button';
+import Headers from '../Others/Headers';
+import Input from '../Forms Elements/Input';
+import InputRadio from '../Forms Elements/InputRadio';
+
 
 const StepTwo = (props) => {
     const {onChange,nextStep, prevStep, state} = props;
@@ -39,7 +40,7 @@ const StepTwo = (props) => {
         }
     }, [errors]);
 
-    // tutaj button disabled tez nie działa bo jest problem z tą pusta tablicą errorow - jak to rozwiązać?
+    // tutaj button disabled tez nie działa bo jest problem z tą pusta tablicą errors - jak to rozwiązać?
 
     return (
         <Form title="Personal information" onSubmit={handleSubmit} >
@@ -97,6 +98,23 @@ StepTwo.propTypes = {
     onChange:PropTypes.func.isRequired,
     nextStep:PropTypes.func.isRequired,
     prevStep:PropTypes.func.isRequired,
+    state:PropTypes.shape({
+        step: PropTypes.number,
+        firstName: PropTypes.string,
+        astName:PropTypes.string,
+        email:PropTypes.string,
+        password:PropTypes.string,
+        gender:PropTypes.string,
+        birthday:PropTypes.string,
+        phone:PropTypes.string,
+        menFashion: PropTypes.string,
+        womenFashion: PropTypes.string,
+        childFashion: PropTypes.string,
+        street:PropTypes.string,
+        zip:PropTypes.string,
+        city:PropTypes.string,
+        country:PropTypes.string,
+    }).isRequired
 }
 
 // const [selectedValue, setSelectedValue] = useState();

@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CheckboxWrapper,CheckboxLabel,CheckboxInput,StyledErrors} from './styled/Checkbox.styled';
+import {CheckboxWrapper,CheckboxLabel,CheckboxInput,StyledErrors} from '../styled/Checkbox.styled';
 
 const Checkbox = (props)=>{
     const {type,name,label,value,onChange,error}=props;

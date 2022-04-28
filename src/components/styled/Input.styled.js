@@ -29,7 +29,6 @@ const StyledInputField = styled.input`
     }
 `;
 
-
 const StyledInputLabel = styled.label`
     color: #666666;
     font-size:1.5rem;

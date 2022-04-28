@@ -6,7 +6,7 @@ import React,{useState,useReducer} from 'react';
 import StepOne from './Forms/StepOne';
 import StepTwo from './Forms/StepTwo';
 import StepThree from './Forms/StepThree';
-import ProgressBar from './ProgresBar';
+import ProgressBar from './Others/ProgresBar';
 
 const App = () => {
     const initState = {
@@ -32,7 +32,7 @@ const App = () => {
         return {...state, [type]:value}
     }
 
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(2);
     const [state, dispatch] = useReducer(reducer,initState);
 
     const handleInputs = (nameInput,valueInput)=> {
@@ -85,6 +85,5 @@ const App = () => {
     default:
     }
 }
-
 
 export default App;

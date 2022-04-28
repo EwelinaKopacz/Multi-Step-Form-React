@@ -2,7 +2,7 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledInputWrapper,StyledInputField,StyledInputLabel,StyledInputErrors} from './styled/Input.styled';
+import { StyledInputWrapper,StyledInputField,StyledInputLabel,StyledInputErrors} from '../styled/Input.styled';
 
 const Input = (props) => {
     const {type,label,value,onChange,error,onBlur, ...inputProps} = props;
