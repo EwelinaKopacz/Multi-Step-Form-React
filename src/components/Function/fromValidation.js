@@ -1,7 +1,7 @@
-const formValidation =(values,inputsStep1)=>{
+const formValidation =(values,inputsList)=>{
     const errors = {};
 
-    inputsStep1.map((input) => {
+    inputsList.map((input) => {
         const value = values[input.name];
         if(input.required){
             if(value.length === 0){

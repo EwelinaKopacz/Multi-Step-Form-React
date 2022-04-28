@@ -1,4 +1,4 @@
-import styled,{css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledInputRadioField = styled.fieldset`
     width: 55%;
@@ -70,7 +70,7 @@ const StyledInputRadioLabel = styled.label`
 `;
 
 const StyledInputRadioInput = styled.input`
-    //display: none;
+        //display: none;
         height: 20px;
         width: 20px;
 
