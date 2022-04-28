@@ -32,7 +32,7 @@ const App = () => {
         return {...state, [type]:value}
     }
 
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(1);
     const [state, dispatch] = useReducer(reducer,initState);
 
     const handleInputs = (nameInput,valueInput)=> {
