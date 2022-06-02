@@ -21,9 +21,11 @@ const StyledInputRadioWrapper = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     //padding:20px 20px;
     // margin: 5px;
-    //border:1px solid red;
+    padding:10px;
+    border:1px solid red;
     /* box-shadow: 4px 4px 6px 0 rgba(224,228,233,.5),
                 -4px -4px 6px 0 rgba(116, 125, 136, .2), 
                 -4px -4px 6px 0 rgba(245,245,245,.5),
@@ -41,6 +43,10 @@ const StyledInputRadioContainer = styled.div`
                 -4px -4px 6px 0 rgba(255,255,255,.5),
                 4px 4px 6px 0 rgba(116, 125, 136, .3);
     padding:10px 5px;
+`;
+
+const StyledInputRadioParent = styled.div`
+       border:1px solid blue;
 `;
 
 const StyledInputRadioLabel = styled.label`
@@ -90,5 +96,6 @@ export { StyledInputRadioContainer,
     StyledInputRadioLegend,
     StyledInputRadioWrapper,
     StyledInputRadioInput,
-    StyledInputRadioLabel 
+    StyledInputRadioLabel,
+    StyledInputRadioParent 
 };

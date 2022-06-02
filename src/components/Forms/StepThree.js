@@ -7,9 +7,9 @@ import inputsStep3 from '../../data/inputsStep3.json'
 import formValidation from '../Function/fromValidation';
 import {StyledButtonWrapper} from '../styled/Button.styled'
 
-import Form from '../Forms Elements/Form';
-import Button from '../Forms Elements/Button';
-import Input from '../Forms Elements/Input';
+import Form from '../FormsElements/Form';
+import Button from '../FormsElements/Button';
+import Input from '../FormsElements/Input';
 
 
 const StepThree = (props) => {
@@ -55,21 +55,5 @@ export default StepThree;
 StepThree.propTypes = {
     onChange:PropTypes.func.isRequired,
     prevStep:PropTypes.func.isRequired,
-    state:PropTypes.shape({
-        step: PropTypes.number,
-        firstName: PropTypes.string,
-        astName:PropTypes.string,
-        email:PropTypes.string,
-        password:PropTypes.string,
-        gender:PropTypes.string,
-        birthday:PropTypes.string,
-        phone:PropTypes.string,
-        menFashion: PropTypes.string,
-        womenFashion: PropTypes.string,
-        childFashion: PropTypes.string,
-        street:PropTypes.string,
-        zip:PropTypes.string,
-        city:PropTypes.string,
-        country:PropTypes.string,
-    }).isRequired
+    state:PropTypes.objectOf(PropTypes.string).isRequired
 }

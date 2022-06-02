@@ -10,7 +10,6 @@ import ProgressBar from './Others/ProgresBar';
 
 const App = () => {
     const initState = {
-        step: 1,
         firstName:'',
         lastName:'',
         email:'',

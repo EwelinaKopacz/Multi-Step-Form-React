@@ -10,11 +10,11 @@ import inputsStep2 from '../../data/inputsStep2.json'
 import formValidation from '../Function/fromValidation';
 import {StyledButtonWrapper} from '../styled/Button.styled'
 
-import Form from '../Forms Elements/Form';
-import Button from '../Forms Elements/Button';
+import Form from '../FormsElements/Form';
+import Button from '../FormsElements/Button';
 import Headers from '../Others/Headers';
-import Input from '../Forms Elements/Input';
-import InputRadio from '../Forms Elements/InputRadio';
+import Input from '../FormsElements/Input';
+import InputRadio from '../FormsElements/InputRadio';
 
 
 const StepTwo = (props) => {
@@ -98,23 +98,7 @@ StepTwo.propTypes = {
     onChange:PropTypes.func.isRequired,
     nextStep:PropTypes.func.isRequired,
     prevStep:PropTypes.func.isRequired,
-    state:PropTypes.shape({
-        step: PropTypes.number,
-        firstName: PropTypes.string,
-        astName:PropTypes.string,
-        email:PropTypes.string,
-        password:PropTypes.string,
-        gender:PropTypes.string,
-        birthday:PropTypes.string,
-        phone:PropTypes.string,
-        menFashion: PropTypes.string,
-        womenFashion: PropTypes.string,
-        childFashion: PropTypes.string,
-        street:PropTypes.string,
-        zip:PropTypes.string,
-        city:PropTypes.string,
-        country:PropTypes.string,
-    }).isRequired
+    state:PropTypes.objectOf(PropTypes.string).isRequired
 }
 
 // const [selectedValue, setSelectedValue] = useState();
