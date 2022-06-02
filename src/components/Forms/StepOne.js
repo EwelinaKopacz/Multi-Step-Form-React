@@ -2,7 +2,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/function-component-definition */
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import formValidation from '../Function/fromValidation';
 import inputsStep1 from '../../data/inputsStep1.json';
@@ -22,12 +22,6 @@ const StepOne = (props) => {
     console.log('disabled',isDisabled)
     console.log('checked',checked)
 
-    const handleCheckbox = () => setChecked(!checked);
-
-    const handleBlur = () => {
-        setErrors(formValidation(state,inputsStep1))
-    }
-
     const checkCheckbox = (checkboxValue) => {
         if(checkboxValue === false){
             setCheckboxError('You have to accept terms')
@@ -37,15 +31,39 @@ const StepOne = (props) => {
         }
     }
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        const checkboxVal = checkCheckbox(checked);
+    const validation = () => {
+        checkCheckbox(checked);
         const err = formValidation(state,inputsStep1);
-        if(Object.keys(err) === 0 && checkboxVal === true){
-            setIsDisabled(false) // disabled nie zmienia swojej wartości na false
-        }
+        // if(Object.keys(err) === 0 && checkboxVal === true){
+        //     setIsDisabled(false) // disabled nie zmienia swojej wartości na false
+        // }
         setErrors(err);
     }
+
+
+    const handleCheckbox = () => {
+        setChecked(!checked);
+        validation()
+    }
+
+    const handleBlur = () => {
+        setErrors(formValidation(state,inputsStep1))
+    }
+
+    
+
+    const isButtonDisabled = ()=> errors.length > 0 || checked === false
+    
+    
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        validation()
+        
+    }
+
+    // useEffect(()=>{
+    //     validation()
+    // },[checked])
 
     return (
         <Form title="Register" onSubmit={handleSubmit}>
@@ -63,7 +81,7 @@ const StepOne = (props) => {
                 value={checked} type="checkbox" name="checkbox"
                 onChange={handleCheckbox}
                 error={checkboxError} />
-            <Button type="submit" onClick={nextStep} disabled={isDisabled}>Next Step</Button>
+            <Button type="submit" onClick={nextStep} disabled={isButtonDisabled()}>Next Step</Button>
         </Form>
 
     )
