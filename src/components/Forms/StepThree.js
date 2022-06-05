@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
 import inputsStep3 from '../../data/inputsStep3.json'
-import formValidation from '../Function/fromValidation';
+import formValidation from '../Function/formValidation';
 import {StyledButtonWrapper} from '../styled/Button.styled'
 
 import Form from '../FormsElements/Form';
@@ -16,19 +16,18 @@ const StepThree = (props) => {
     const {onChange, prevStep, state} = props;
     const [errors, setErrors] = useState({});
 
+    const validation = ()=> {
+        setErrors(formValidation(state,inputsStep3));
+    }
+
     const handleBlur = () => {
         setErrors(formValidation(state,inputsStep3))
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        setErrors(formValidation(state,inputsStep3));
+        validation()
     }
-
-    useEffect(() => {
-        if (Object.keys(errors).length === 0) {
-        }
-    }, [errors]);
 
     return (
         <Form title="Delivery Adress" onSubmit={handleSubmit}>
@@ -44,7 +43,7 @@ const StepThree = (props) => {
             ))}
             <StyledButtonWrapper>
                 <Button onClick={prevStep}>Prev Step</Button>
-                <Button >Finish</Button>
+                <Button>Finish</Button>
             </StyledButtonWrapper>
         </Form>
     )

@@ -21,11 +21,12 @@ Checkbox.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
+    value: PropTypes.bool,
     error: PropTypes.string
 }
 
 Checkbox.defaultProps = {
-    error: ''
+    error: '',
+    value: null
 };

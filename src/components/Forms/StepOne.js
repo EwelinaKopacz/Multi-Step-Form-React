@@ -2,9 +2,9 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/function-component-definition */
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
-import formValidation from '../Function/fromValidation';
+import formValidation from '../Function/formValidation';
 import inputsStep1 from '../../data/inputsStep1.json';
 
 import Form from '../FormsElements/Form';
@@ -14,13 +14,11 @@ import Checkbox from '../FormsElements/Checkbox';
 
 const StepOne = (props) => {
     const {onChange,nextStep,state} = props;
-
     const [errors, setErrors] = useState({});
     const [checked, setChecked] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(true);
     const [checkboxError,setCheckboxError] = useState('');
-    console.log('disabled',isDisabled)
-    console.log('checked',checked)
+
+    const handleCheckbox = () => setChecked(!checked);
 
     const checkCheckbox = (checkboxValue) => {
         if(checkboxValue === false){
@@ -31,42 +29,28 @@ const StepOne = (props) => {
         }
     }
 
-    const validation = () => {
+    const validation = ()=> {
         checkCheckbox(checked);
         const err = formValidation(state,inputsStep1);
-        // if(Object.keys(err) === 0 && checkboxVal === true){
-        //     setIsDisabled(false) // disabled nie zmienia swojej wartości na false
-        // }
+        if(Object.keys(err).length === 0 && checked === true){
+            return true
+        }
         setErrors(err);
     }
 
-
-    const handleCheckbox = () => {
-        setChecked(!checked);
+    const handleBlur = () => {
         validation()
     }
 
-    const handleBlur = () => {
-        setErrors(formValidation(state,inputsStep1))
-    }
-
-    
-
-    const isButtonDisabled = ()=> errors.length > 0 || checked === false
-    
-    
     const handleSubmit = (e) =>{
         e.preventDefault();
-        validation()
-        
+        if(validation()){
+            nextStep()
+        }
     }
 
-    // useEffect(()=>{
-    //     validation()
-    // },[checked])
-
     return (
-        <Form title="Register" onSubmit={handleSubmit}>
+        <Form title="Register">
             {inputsStep1.map((input) => (
                 <Input
                     key={input.id}
@@ -81,11 +65,10 @@ const StepOne = (props) => {
                 value={checked} type="checkbox" name="checkbox"
                 onChange={handleCheckbox}
                 error={checkboxError} />
-            <Button type="submit" onClick={nextStep} disabled={isButtonDisabled()}>Next Step</Button>
+            <Button type="submit" onClick={handleSubmit}>Next Step</Button>
         </Form>
 
     )
-
 }
 
 export default StepOne;

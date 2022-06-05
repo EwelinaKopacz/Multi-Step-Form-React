@@ -2,7 +2,7 @@
 /* eslint-disable react/function-component-definition */
 import React,{useState} from 'react';
 import PropTypes from 'prop-types';
-import { StyledInputRadioContainer,StyledInputRadioField,StyledInputRadioLegend,StyledInputRadioWrapper,StyledInputRadioInput,StyledInputRadioLabel,StyledInputRadioParent} from '../styled/InputRadio.styled';
+import { StyledInputRadioContainer,StyledInputRadioField,StyledInputRadioLegend,StyledInputRadioWrapper,StyledInputRadioInput,StyledInputRadioLabel} from '../styled/InputRadio.styled';
 import { StyledInputLabel} from '../styled/Input.styled';
 
 const InputRadio = (props) => {

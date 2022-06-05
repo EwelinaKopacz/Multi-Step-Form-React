@@ -13,8 +13,9 @@ const Input = (props) => {
             <StyledInputField
                 {...inputProps}
                 onChange={(e)=> onChange(e.target.name,e.target.value)}
-                onBlur={onBlur}
+                onBlur={(e) => onBlur(e.target.name)}
                 type={type}
+                value={value}
             />
             <StyledInputErrors>{error}</StyledInputErrors>
         </StyledInputWrapper>
