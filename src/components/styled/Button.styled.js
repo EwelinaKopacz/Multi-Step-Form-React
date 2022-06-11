@@ -19,6 +19,7 @@ const StyledButton = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
+    letter-spacing: 0.2px;
     border-radius: 25px;
     box-shadow: 2px 2px 5px #babecc,
                 -5px -5px 10px #ffffff73;

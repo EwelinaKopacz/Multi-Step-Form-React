@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
@@ -13,24 +14,31 @@ import Input from '../FormsElements/Input';
 
 
 const StepThree = (props) => {
-    const {onChange, prevStep, state} = props;
+    const {onChange, nextStep, prevStep, state,clearInputs,step} = props;
     const [errors, setErrors] = useState({});
 
-    const validation = ()=> {
-        setErrors(formValidation(state,inputsStep3));
+    const validation = () => {
+        const err = formValidation(state,inputsStep3);
+        if(Object.keys(err).length === 0){
+            return true
+        }
+        setErrors(err);
     }
 
     const handleBlur = () => {
-        setErrors(formValidation(state,inputsStep3))
+        validation();
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        validation()
+        if(validation()){
+            clearInputs();
+            nextStep();
+        }
     }
 
     return (
-        <Form title="Delivery Adress" onSubmit={handleSubmit}>
+        <Form title="Delivery Adress" onSubmit={handleSubmit} step={step}>
             {inputsStep3.map((input) => (
                 <Input
                     key={input.id}
@@ -43,7 +51,7 @@ const StepThree = (props) => {
             ))}
             <StyledButtonWrapper>
                 <Button onClick={prevStep}>Prev Step</Button>
-                <Button>Finish</Button>
+                <Button onClick={handleSubmit}>Finish</Button>
             </StyledButtonWrapper>
         </Form>
     )
@@ -54,5 +62,8 @@ export default StepThree;
 StepThree.propTypes = {
     onChange:PropTypes.func.isRequired,
     prevStep:PropTypes.func.isRequired,
-    state:PropTypes.objectOf(PropTypes.string).isRequired
+    nextStep:PropTypes.func.isRequired,
+    state:PropTypes.objectOf(PropTypes.string).isRequired,
+    clearInputs:PropTypes.func.isRequired,
+    step:PropTypes.number.isRequired
 }

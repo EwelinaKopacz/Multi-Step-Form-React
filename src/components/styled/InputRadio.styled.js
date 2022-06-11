@@ -1,101 +1,94 @@
 import styled from 'styled-components';
 
-const StyledInputRadioField = styled.fieldset`
+const StyledWrapper = styled.div`
     width: 55%;
-    display:flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin:10px 0;
-    border:none;
-    padding:5px 0px;
-    position: relative;
+    padding:15px 10px;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    background: #dde1e7;
+    box-shadow: 4px 4px 4px 0px #ccd1d9 inset,
+                -4px -4px 4px 0px #e9e9e9 inset;
 `;
 
-const StyledInputRadioLegend = styled.legend`
+const StyledRadioWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    height: 40px;
+    position: relative;
+    margin-bottom: 10px;
+`;
+
+const StyledRadioItem = styled.div`
+    position: absolute;
+    top:25%;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-left: 5px;
+    box-shadow: -1px -2px 8px 0px #ffffff,
+                8px 4px 12px 0px #d1d9e6;
+    overflow: hidden;
+    &::before,&::after{
+        content: '';
+        position: absolute;
+        top: 14%;
+        left: 14%;
+        height: 75%;
+        width: 75%;
+        border-radius: 50%;
+    }
+    &::before{
+        box-shadow: -6px -2px 4px 0px #d1d9e6,
+                    4px 2px 8px 0px #c2bfbf;
+    }
+    &::after {
+        background-color: #ecf0f3;
+        box-shadow: -2px -2px 5px 0px #fff,
+                    4px 2px 8px 0px #d1d9e6;
+    }
+`;
+
+const StyledRadio = styled.input`
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    margin-left: 5px;
+    &:hover ~ ${StyledRadioItem} {
+        background-color: #ffffff;
+    }
+    &:checked ~ ${StyledRadioItem} {
+        &::after{
+            top: 25%;
+            left: 25%;
+            height: 50%;
+            width: 50%;
+            box-shadow: -1px -2px 6px 0px black, 
+                        -1px 2px 6px 0px black;
+        }
+    }
+`;
+
+const StyledRadioLabel = styled.label`
     color: #666666;
-    font-size:1.5rem;
+    font-size:1.4rem;
     padding: 4px 0 4px 8px;
 `;
 
-const StyledInputRadioWrapper = styled.div`
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    //padding:20px 20px;
-    // margin: 5px;
-    padding:10px;
-    border:1px solid red;
-    /* box-shadow: 4px 4px 6px 0 rgba(224,228,233,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-                -4px -4px 6px 0 rgba(245,245,245,.5),
-                4px 4px 6px 0 rgba(116, 125, 136, .3); */
-`;
-
-const StyledInputRadioContainer = styled.div`
-
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-                -4px -4px 6px 0 rgba(255,255,255,.5),
-                4px 4px 6px 0 rgba(116, 125, 136, .3);
-    padding:10px 5px;
-`;
-
-const StyledInputRadioParent = styled.div`
-       border:1px solid blue;
-`;
-
-const StyledInputRadioLabel = styled.label`
-    position: relative;
-    display: flex;
-    align-items: center;
+const StyledRadioLegend = styled.p`
     color: #666666;
     font-size:1.5rem;
-    padding: 10px;
-    cursor: pointer;
-    width:100%;
-    border: 1px solid #666666;
-    // border-radius: 1px;
-    box-shadow: 4px 4px 6px 0 rgba(224,228,233,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-                -4px -4px 6px 0 rgba(245,245,245,.5),
-                4px 4px 6px 0 rgba(116, 125, 136, .3);
-    &::before{
-        //position: absolute;
-        content: "";
-        height: 17px;
-        width: 17px;
-        border: 1px solid #666666;
-        border-radius: 50%;
-        margin-right: 20px
-    }
+    margin: 8px 0 8px 8px;
 `;
 
-const StyledInputRadioInput = styled.input`
-        //display: none;
-        height: 20px;
-        width: 20px;
 
-    &:checked + ${StyledInputRadioLabel} {
-        background-color: #ffffff73;
-    }
-    &:checked + ${StyledInputRadioLabel}::before{
-        height: 10px;
-        width: 10px;
-        border: 5px solid white;
-        background-color: black;
-    }
-`;
-
-export { StyledInputRadioContainer,
-    StyledInputRadioField,
-    StyledInputRadioLegend,
-    StyledInputRadioWrapper,
-    StyledInputRadioInput,
-    StyledInputRadioLabel,
-    StyledInputRadioParent 
+export {
+    StyledWrapper,
+    StyledRadioWrapper,
+    StyledRadio,
+    StyledRadioItem,
+    StyledRadioLabel,
+    StyledRadioLegend
 };

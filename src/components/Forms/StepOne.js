@@ -13,7 +13,7 @@ import Input from '../FormsElements/Input';
 import Checkbox from '../FormsElements/Checkbox';
 
 const StepOne = (props) => {
-    const {onChange,nextStep,state} = props;
+    const {onChange,nextStep,state,step} = props;
     const [errors, setErrors] = useState({});
     const [checked, setChecked] = useState(false);
     const [checkboxError,setCheckboxError] = useState('');
@@ -32,7 +32,7 @@ const StepOne = (props) => {
     const validation = ()=> {
         checkCheckbox(checked);
         const err = formValidation(state,inputsStep1);
-        if(Object.keys(err).length === 0 && checked === true){
+        if(Object.keys(err).length === 0 && checked){
             return true
         }
         setErrors(err);
@@ -50,7 +50,7 @@ const StepOne = (props) => {
     }
 
     return (
-        <Form title="Register">
+        <Form title="Register" step={step}>
             {inputsStep1.map((input) => (
                 <Input
                     key={input.id}
@@ -76,5 +76,6 @@ export default StepOne;
 StepOne.propTypes = {
     onChange:PropTypes.func.isRequired,
     nextStep:PropTypes.func.isRequired,
-    state:PropTypes.objectOf(PropTypes.string).isRequired
+    state:PropTypes.objectOf(PropTypes.string).isRequired,
+    step:PropTypes.number.isRequired
 }

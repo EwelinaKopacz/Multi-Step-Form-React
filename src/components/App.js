@@ -2,85 +2,79 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/function-component-definition */
 
-import React,{useState,useReducer} from 'react';
+import React,{useState} from 'react';
 import StepOne from './Forms/StepOne';
 import StepTwo from './Forms/StepTwo';
 import StepThree from './Forms/StepThree';
-import ProgressBar from './Others/ProgresBar';
+import SuccessForm from './Others/SuccessForm';
+
+const init = {
+    firstName:'',
+    lastName:'',
+    email:'',
+    password:'',
+    gender:'',
+    birthday:'',
+    phone:'',
+    interests:'',
+    street:``,
+    zip:``,
+    city:``,
+    country:``,
+}
 
 const App = () => {
-    const initState = {
-        firstName:'',
-        lastName:'',
-        email:'',
-        password:'',
-        gender:'',
-        birthday:'',
-        phone:'',
-        menFashion: ``,
-        womenFashion: ``,
-        childFashion: ``,
-        street:``,
-        zip:``,
-        city:``,
-        country:``,
+    const [step, setStep] = useState(2);
+    const [values, setValues] = useState(init)
+
+    const handleInputs = (name,value) =>{
+        setValues({ ...values, [name]: value });
     }
 
-    const reducer = (state,action) => {
-        const {type, value} = action;
-        return {...state, [type]:value}
-    }
-
-    const [step, setStep] = useState(1);
-    const [state, dispatch] = useReducer(reducer,initState);
-
-    const handleInputs = (nameInput,valueInput)=> {
-        const action = {
-            type: nameInput,
-            value: valueInput,
-        }
-        dispatch(action)
+    const clearInputs = ()=>{
+        setValues(init)
     }
 
     const nextStep = () => setStep(step + 1);
 
     const prevStep = () => setStep(step - 1);
 
+    const goBack = () => setStep(1)
+
     switch (step) {
     case 1:
         return (
-            <>
-                <ProgressBar step={step}/>
-                <StepOne
-                    onChange={handleInputs}
-                    nextStep={nextStep}
-                    state={state}
-                />
-            </>
+            <StepOne
+                onChange={handleInputs}
+                nextStep={nextStep}
+                state={values}
+                step={step}
+            />
         )
     case 2:
         return (
-            <>
-                <ProgressBar step={step}/>
-                <StepTwo
-                    onChange={handleInputs}
-                    prevStep={prevStep}
-                    nextStep={nextStep}
-                    state={state}
-                />
-            </>
+            <StepTwo
+                onChange={handleInputs}
+                prevStep={prevStep}
+                nextStep={nextStep}
+                state={values}
+                step={step}
+            />
+
         )
     case 3:
         return (
-            <>
-                <ProgressBar step={step}/>
-                <StepThree
-                    onChange={handleInputs}
-                    prevStep={prevStep}
-                    state={state}
-                />
-            </>
+            <StepThree
+                onChange={handleInputs}
+                prevStep={prevStep}
+                nextStep={nextStep}
+                state={values}
+                clearInputs={clearInputs}
+                step={step}
+            />
         )
+    case 4:
+        return <SuccessForm onClick={goBack} text='Message was send!' />
     default:
     }
 }

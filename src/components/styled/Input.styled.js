@@ -4,6 +4,7 @@ const StyledInputWrapper = styled.div`
     width: 55%;
     display: flex;
     flex-direction: column;
+    margin: 3px 0px;
 `;
 
 const StyledInputErrors = styled.p`

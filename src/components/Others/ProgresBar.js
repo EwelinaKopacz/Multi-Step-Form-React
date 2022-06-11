@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyledProgressBarContainer,StyledProgressBarWrapper,StyledProgressBarValue} from '../styled/ProgressBar.styled'
+import {StyledProgressBar,StyledProgressBarValue,StyledProgressBarWrapper,StyledProgressBarContainer} from '../styled/ProgressBar.styled'
 
 const ProgressBar = (props) => {
     const {step} = props;
@@ -20,10 +20,10 @@ const ProgressBar = (props) => {
 
     return (
         <StyledProgressBarWrapper>
-            <StyledProgressBarContainer>
-                <progress value={completed} max={max} />
-                <StyledProgressBarValue>{(completed/max) * 100}%</StyledProgressBarValue>
+            <StyledProgressBarContainer value={completed}>
+                <StyledProgressBar value={completed} max={max} />
             </StyledProgressBarContainer>
+            <StyledProgressBarValue>{(completed/max) * 100}%</StyledProgressBarValue>
         </StyledProgressBarWrapper>
     )
 }

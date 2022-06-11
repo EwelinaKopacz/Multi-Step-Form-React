@@ -11,41 +11,35 @@ import {StyledButtonWrapper} from '../styled/Button.styled'
 
 import Form from '../FormsElements/Form';
 import Button from '../FormsElements/Button';
-import Headers from '../Others/Headers';
 import Input from '../FormsElements/Input';
 import InputRadio from '../FormsElements/InputRadio';
 
 
 const StepTwo = (props) => {
-    const {onChange,nextStep, prevStep, state} = props;
+    const {onChange,nextStep, prevStep, state, step} = props;
     const [errors, setErrors] = useState({});
-    // const [disabled, isDisabled] = useState(true);
-
-    // const isButtonDisabled = () => {
-    //     if(Object.keys(errors).length > 0){
-    //         return true
-    //     }
-    //     return false
-    // }
 
     const validation = ()=> {
-        setErrors(formValidation(state,inputsStep2))
-        // if(isButtonDisabled()){
-        //     isDisabled(false)
-        // }
+        const err = formValidation(state,inputsStep2);
+        if(Object.keys(err).length === 0){
+            return true
+        }
+        setErrors(err);
     }
 
     const handleBlur = () => {
-        setErrors(formValidation(state,inputsStep2))
+        validation();
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        validation();
+        if(validation()){
+            nextStep();
+        }
     }
 
     return (
-        <Form title="Personal information" onSubmit={handleSubmit} >
+        <Form title="Personal information" step={step}>
             {inputsStep2.map((input) => {
                 if(input.type === "radio" && input.name === "gender"){
                     return (
@@ -72,9 +66,8 @@ const StepTwo = (props) => {
                     )
                 }
             })}
-            <Headers headerH3="Interests:"/>
             {inputsStep2.map((input) => {
-                if(input.type === "radio" && input.name !== "gender"){
+                if(input.type === "radio" && input.name === "interests"){
                     return (
                         <InputRadio
                             key={input.id}
@@ -87,7 +80,7 @@ const StepTwo = (props) => {
             })}
             <StyledButtonWrapper>
                 <Button onClick={prevStep}>Prev Step</Button>
-                <Button onClick={nextStep}>Next Step</Button>
+                <Button onClick={handleSubmit}>Next Step</Button>
             </StyledButtonWrapper>
         </Form>
     )
@@ -100,5 +93,6 @@ StepTwo.propTypes = {
     onChange:PropTypes.func.isRequired,
     nextStep:PropTypes.func.isRequired,
     prevStep:PropTypes.func.isRequired,
-    state:PropTypes.objectOf(PropTypes.string).isRequired
+    state:PropTypes.objectOf(PropTypes.string).isRequired,
+    step:PropTypes.number.isRequired
 }

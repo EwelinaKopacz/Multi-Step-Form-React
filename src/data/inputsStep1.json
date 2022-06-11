@@ -21,13 +21,14 @@
         "type":"email",
         "label":"Email:",
         "required":"true",
-        "pattern":"^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}"
+        "pattern":"^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}",
+        "placeholder":"example@example.com"
     },
     {
         "id":4,
         "name":"password",
         "type":"password",
-        "label":"Password:",
+        "label":"Password (min:8 characters):",
         "required":"true",
         "patter":"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
     }

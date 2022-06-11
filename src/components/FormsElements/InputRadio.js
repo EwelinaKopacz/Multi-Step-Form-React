@@ -1,47 +1,62 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/function-component-definition */
 import React,{useState} from 'react';
 import PropTypes from 'prop-types';
-import { StyledInputRadioContainer,StyledInputRadioField,StyledInputRadioLegend,StyledInputRadioWrapper,StyledInputRadioInput,StyledInputRadioLabel} from '../styled/InputRadio.styled';
-import { StyledInputLabel} from '../styled/Input.styled';
+import { StyledWrapper,StyledRadioWrapper,StyledRadioItem,StyledRadio,StyledRadioLabel,StyledRadioLegend } from '../styled/InputRadio.styled';
 
 const InputRadio = (props) => {
-    const {type,label,onChange,value,name, ...inputProps} = props;
-    const [select, setSelect] = useState(" ");
+    const {type,onChange,name,label} = props;
+    const [gender, setGender] = useState('');
+    const [interests, setInterests] = useState('');
 
-    const handleSelectChange = (pickedGender) => {
-        setSelect(pickedGender);
-        onChange('gender', select)
+    const handleGender = (nameGender,pickedGender) => {
+        setGender(pickedGender);
+        onChange(nameGender,pickedGender)
     };
+
+    const handleInterests = (nameInterests, pickedInterests) => {
+        setInterests(pickedInterests);
+        onChange(nameInterests, pickedInterests)
+    }
 
     if(name === "gender") {
         return (
-            // nie moge nalozyc ::before na pole input radio, poddaje sie, nie mam juz siły do tego;/
-            <StyledInputRadioField>
-                <StyledInputRadioLegend>Gender:</StyledInputRadioLegend>
-                <StyledInputRadioWrapper>
-                    <StyledInputRadioLabel>
-                        <StyledInputRadioInput type='radio' name={name} value='male' checked={select === "male"} onChange={(e) => handleSelectChange(e.target.value)} />
-                        Male</StyledInputRadioLabel>
-                </StyledInputRadioWrapper>
-                <StyledInputRadioWrapper>
-                    <StyledInputRadioInput type='radio' name={name} value='female' checked={select === "female"} onChange={(e) => handleSelectChange(e.target.value)}  />
-                    <StyledInputRadioLabel> Female</StyledInputRadioLabel>
-                </StyledInputRadioWrapper>
-            </StyledInputRadioField>
+            <StyledWrapper>
+                <StyledRadioLegend>{label}</StyledRadioLegend>
+                <StyledRadioWrapper>
+                    <StyledRadio type={type} name={name} value='male' checked={gender === 'male'} onChange={(e) => handleGender(e.target.name, e.target.value)}/>
+                    <StyledRadioItem/>
+                    <StyledRadioLabel>Male</StyledRadioLabel>
+                </StyledRadioWrapper>
+                <StyledRadioWrapper>
+                    <StyledRadio type={type} name={name} value='female' checked={gender === 'female'} onChange={(e) => handleGender(e.target.name, e.target.value)}/>
+                    <StyledRadioItem/>
+                    <StyledRadioLabel>Female</StyledRadioLabel>
+                </StyledRadioWrapper>
+            </StyledWrapper>
+
         )
     }
     return (
-        // problem mam z tym polem, nie mogę go odkliknąć
-        <StyledInputRadioContainer>
-            <StyledInputLabel htmlFor={type}>{label}</StyledInputLabel>
-            <input
-                {...inputProps}
-                onChange={(e)=> onChange(e.target.name,e.target.value)}
-                type={type}
-                name={name}
-            />
-        </StyledInputRadioContainer>
+        <StyledWrapper>
+            <StyledRadioLegend>{label}</StyledRadioLegend>
+            <StyledRadioWrapper>
+                <StyledRadio type={type} name={name} value='men fashion' checked={interests === 'men fashion'} onChange={(e) => handleInterests(e.target.name, e.target.value)}/>
+                <StyledRadioItem/>
+                <StyledRadioLabel>Men Fashion</StyledRadioLabel>
+            </StyledRadioWrapper>
+            <StyledRadioWrapper>
+                <StyledRadio type={type} name={name} value='women fashion' checked={interests === 'women fashion'} onChange={(e) => handleInterests(e.target.name, e.target.value)}/>
+                <StyledRadioItem/>
+                <StyledRadioLabel>Women Fashion</StyledRadioLabel>
+            </StyledRadioWrapper>
+            <StyledRadioWrapper>
+                <StyledRadio type={type} name={name} value='children fashion' checked={interests === 'children fashion'} onChange={(e) => handleInterests(e.target.name, e.target.value)}/>
+                <StyledRadioItem/>
+                <StyledRadioLabel>Children Fashion</StyledRadioLabel>
+            </StyledRadioWrapper>
+        </StyledWrapper>
     )
 }
 
@@ -51,8 +66,7 @@ InputRadio.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     onChange:PropTypes.func.isRequired,
-    onBlur:PropTypes.func.isRequired,
-    value:PropTypes.string.isRequired,
+    // onBlur:PropTypes.func.isRequired,
     name: PropTypes.string.isRequired
 }
 

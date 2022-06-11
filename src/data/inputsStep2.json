@@ -8,8 +8,10 @@
     {
         "id":6,
         "name":"birthday",
-        "type":"date",
-        "label":"Day of birth:"
+        "type":"text",
+        "label":"Day of birth:",
+        "pattern":"^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$",
+        "placeholder":"DD/MM/YYYY"
     },
     {
         "id":7,
@@ -20,20 +22,8 @@
     },
     {
         "id": 8,
-        "name":"menFashion",
+        "name":"interests",
         "type":"radio",
-        "label":"Men's Fashion"
-    },
-    {
-        "id": 9,
-        "name":"womenFashion",
-        "type":"radio",
-        "label":"Women's Fashion"
-    },
-    {
-        "id": 10,
-        "name":"childFashion",
-        "type":"radio",
-        "label":"Child's Fashion"
+        "label":"Interests:"
     }
 ]

@@ -2,14 +2,16 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProgressBar from '../Others/ProgresBar';
 import { StyledFormWrapper,StyledInputsContainer} from '../styled/Form.styled';
 import {HeadersStyledH1} from '../styled/HeaderStyled'
 
 const Form = (props) => {
-    const {title,children,onSubmit} = props;
+    const {title,children,step} = props;
     return (
         <section>
-            <StyledFormWrapper noValidate onSubmit={onSubmit}>
+            <StyledFormWrapper noValidate>
+                <ProgressBar step={step}/>
                 <HeadersStyledH1>
                     {title}
                 </HeadersStyledH1>
@@ -26,5 +28,5 @@ export default Form;
 Form.propTypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    step:PropTypes.number.isRequired
 }
