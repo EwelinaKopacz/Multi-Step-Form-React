@@ -18,7 +18,7 @@
         "name":"phone",
         "type":"number",
         "label":"Phone Number:",
-        "pattern":"^[1-9]{9}$"
+        "pattern":"^[0-9]{9}$"
     },
     {
         "id": 8,

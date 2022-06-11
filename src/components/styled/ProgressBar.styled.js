@@ -8,6 +8,7 @@ const StyledProgressBarWrapper = styled.div`
     justify-content: center;
     align-items: center;
     overflow:hidden;
+    border-radius: 15px;
 `;
 
 const StyledProgressBarContainer = styled.div`

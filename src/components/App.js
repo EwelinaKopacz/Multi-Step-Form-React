@@ -24,7 +24,7 @@ const init = {
 }
 
 const App = () => {
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(1);
     const [values, setValues] = useState(init)
 
     const handleInputs = (name,value) =>{
