@@ -5,18 +5,10 @@ import {StyledProgressBar,StyledProgressBarValue,StyledProgressBarWrapper,Styled
 
 const ProgressBar = (props) => {
     const {step} = props;
-    let completed = 0;
     const max = 100;
 
-    if(step === 1){
-        completed = 0;
-    }
-    if(step === 2){
-        completed = 40;
-    }
-    if(step === 3){
-        completed = 80;
-    }
+    const completedSteps = {'1': 0, '2': 40, '3': 80}
+    const completed = completedSteps[step];
 
     return (
         <StyledProgressBarWrapper>
