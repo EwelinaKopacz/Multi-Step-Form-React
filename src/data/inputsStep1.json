@@ -4,7 +4,7 @@
         "name":"firstName",
         "type":"text",
         "label":"First Name:",
-        "required":"true",
+        "required":true,
         "pattern":"^[a-zA-Z]{2,30}$"
     },
     {
@@ -12,7 +12,7 @@
         "name":"lastName",
         "type":"text",
         "label":"Last Name:",
-        "required":"true",
+        "required":true,
         "pattern":"^[a-zA-Z]{2,30}$"
     },
     {
@@ -20,7 +20,7 @@
         "name":"email",
         "type":"email",
         "label":"Email:",
-        "required":"true",
+        "required":true,
         "pattern":"^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}",
         "placeholder":"example@example.com"
     },
@@ -29,7 +29,7 @@
         "name":"password",
         "type":"password",
         "label":"Password (min:8 characters):",
-        "required":"true",
+        "required":true,
         "patter":"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"
     }
 ]

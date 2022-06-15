@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 /* eslint-disable react/function-component-definition */
@@ -41,42 +43,51 @@ const App = () => {
 
     const goBack = () => setStep(1)
 
-    switch (step) {
-    case 1:
-        return (
-            <StepOne
-                onChange={handleInputs}
-                nextStep={nextStep}
-                state={values}
-                step={step}
-            />
-        )
-    case 2:
-        return (
-            <StepTwo
-                onChange={handleInputs}
-                prevStep={prevStep}
-                nextStep={nextStep}
-                state={values}
-                step={step}
-            />
+    const stepList =
+    [
+        {
+            component: StepOne,
+            props: {
+                onChange: handleInputs,
+                nextStep,
+                state: values,
+                step,
+            },
+        },
+        {
+            component: StepTwo,
+            props: {
+                onChange: handleInputs,
+                prevStep,
+                nextStep,
+                state: values,
+                step,
+            },
+        },
+        {
+            component: StepThree,
+            props: {
+                onChange: handleInputs,
+                prevStep,
+                nextStep,
+                state: values,
+                clearInputs,
+                step,
+            },
+        },
+        {
+            component: SuccessForm ,
+            props: {
+                onClick:goBack,
+                text:'Message was send!'
+            },
+        }
+    ]
 
-        )
-    case 3:
-        return (
-            <StepThree
-                onChange={handleInputs}
-                prevStep={prevStep}
-                nextStep={nextStep}
-                state={values}
-                clearInputs={clearInputs}
-                step={step}
-            />
-        )
-    case 4:
-        return <SuccessForm onClick={goBack} text='Message was send!' />
-    default:
-    }
+    const Component = stepList[step-1].component;
+    const props = stepList[step-1].props;
+
+    return <Component {...props} />
 }
 
 export default App;
