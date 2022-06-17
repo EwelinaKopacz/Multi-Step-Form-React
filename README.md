@@ -1,4 +1,4 @@
-# Excursion Project - Admin & Client Panel
+# Multi Step Form - React
 
 ## About the project:
 The aim of this project was created multi step form with styling using Styled Components. Design is based on Neumorphism style. Creating this form I focus on writing a small components, which I can use to build my application and using in another project in the future - reusable code.
