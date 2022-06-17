@@ -11,7 +11,6 @@ const SuccessForm = (props) => {
         <StyledDivWrapper>
             <StyledH2>{text}</StyledH2>
             <StyledButton type='button' onClick={e => onClick(e)}>Go Home</StyledButton>
-
         </StyledDivWrapper>
     )
 }

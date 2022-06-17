@@ -1,53 +1,96 @@
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+# Excursion Project - Admin & Client Panel
 
-&nbsp;
+## About the project:
+The aim of this project was created multi step form with styling using Styled Components. Design is based on Neumorphism style. Creating this form I focus on writing a small components, which I can use to build my application and using in another project in the future - reusable code.
 
+My form contains 3 step, simulating register to the shop. Each step is in a separated files and inputs are created based on a JSON file. Additionally I am using information from those files to check data in the form. Functions and state are transferred to another component using props.
 
-# Neumorfizm
+My form contains elements like:
+* inputs type: text, number
+* inputs radio
+* input checkbox
+* buttons
+* progress bar
 
-Neumorfizm to pewien trend w projektowaniu, który opiera się na odpowiednim wykorzystaniu cieni.
+The data in form are checked in two place:
+* when user clicked button "Next Step",
+* when user left active input - user see the error (if exist) immediately
 
-W tym projekcie Twoim zadaniem będzie utworzenie z pomocą Styled Components kilku komponentów zgodnych z tym trendem.
+User can go to next step if all required data are correct. I wanted to limit as possible using if..else statement, so I used data from JSON file like: required: true and pattern to check data.
 
-Formularz powinien być rozbudowany, lecz to od Ciebie zależy, jakie elementy w nim zawrzesz.
-
-Zanim przejdziesz do implementowania, zapoznaj się z kilkoma artykułami na temat neumorfizmu:
-- [Neumorphism in user interfaces](https://uxdesign.cc/neumorphism-in-user-interfaces-b47cef3bf3a6) (jeśli wykorzystałeś darmowy limit, to wystarczy otworzyć tę stronę w trybie incognito)
-- [Neumorphism: why it’s all the hype in UI design](https://www.justinmind.com/blog/neumorphism-ui/)
-- [Neumorphism. The Next Big Thing In UI Design?](https://opengeekslab.com/blog/neumorphism-the-next-big-thing-ui-design/)
-
-## Komponenty
-
-Gdy zdecydujesz, z czego ma się składać Twój formularz, stwórz odpowiednie komponenty: pola tekstowe, listy rozwijane, checkboxy, buttony, paski postępu itd. Możesz skorzystać z podpowiedzi z punktu poniżej (Formularz).
-
-Po zapoznaniu się z podlinkowanymi artykułami wiesz już, na czym polega neumorfizm. Jeśli potrzebujesz dodatkowych wskazówek, to zachęcam Cię do skorzystania z [generatora kodu CSS](https://neumorphism.io/). Możesz również inspirować się [przykładami innych](https://bashooka.com/inspiration/neumorphism-ui-design-examples/).
-
-Jeśli masz własną koncepcję komponentów, to nie widzę przeszkód, abyś z niej skorzystał. Jeśli nie, to możesz się wzorować na poniższej grafice od [Emy Lascan](https://dribbble.com/shots/9527558-Freebie-Neumorphic-UX-UI-Elements).
-
-![](./example.png)
-
-## Formularz
-
-Kiedy będziesz mieć gotowe komponenty, zacznij budować swój formularz.
-
-Pamiętaj, aby w pełni prezentował on Twoje możliwości, np.:
-- składał się z trzech etapów (kroków, ekranów), po których można wygodnie się przemieszczać
-- posiadał rozwijaną listę implementowaną przez specjalne rozwiązanie, inne niż `select`
-- miał animowane elementy typu `chceckbox` czy `radio`
-- poziom wypełnienia pól prezentował przez pasek postępu
-- informował użytkownika od razu po wprowadzeniu błędnych danych.
+```
+if(input.required){
+            if(value.length === 0){
+                errors[input.name]= `${input.label} is required `
+            }
+        }
+        if(input.pattern){
+            const reg = new RegExp(input.pattern);
+            if(!reg.test(value)){
+                errors[input.name] = `${input.label} contains invalid data`
+            }
+        }
+```
 
 
-Jestem pewny, że ten projekt mocno zainteresuje Twojego przyszłego pracodawcę!
+## How to use it
+Download the data, clone my project
+```
+git clone <url>
+```
+
+Type into the terminal
+```
+npm i
+```
+
+Next, to run, type into the terminal:
+```
+npm start
+```
+
+## Technologies:
+* JavaScript
+* React
+* Styled Components
+* HTML
+* CSS
+* Desktop only version
 
 
-PS Konfigurację środowiska zrób według własnego uznania.
+## Solutions
+By creating this project I had an opportunity to practice/learn:
+* using Styled Components
+* how to style inputs like radio and checkbox
+* how to style progress bar to works on each browser in a correct way
+* creating inputs elements based on data in JSON file
+* another way to check if data in inputs is correct before sending the form
+* to build reusable code by splitting it in a small chunks
+* using enum object
 
 
-&nbsp;
 
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+### Project preview
+Step one
+![Project-preview](./preview/screen1.png)
+
+Step two
+![Project-preview](./preview/screen2.png)
+
+Step three
+![Project-preview](./preview/screen3.png)
+
+
+
+### Feel free to contact me:
+* [Linkedin](https://www.linkedin.com/in/ewelina-kopacz-929559100/) - Ewelina Kopacz
+
+
+### Sources:
+* [Devmentor](https://devmentor.pl/b/mniej-instrukcji-warunkowych)
+* [Devmentor](https://devmentor.pl/b/walidacja-formularza-w-javascript)
+* [Nikita Hlopov](https://nikitahl.com/progress-bar-css)
+* [Neumorphism](https://neumorphism.io/#1251af)
+
+### Thanks for project and support to Mateusz Bogolubow:
+* Mentor i Trener Programowania JavaScript - [DevMentor](https://devmentor.pl/) - Mateusz Bogolubow
