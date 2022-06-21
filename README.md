@@ -1,9 +1,9 @@
 # Multi Step Form - React
 
 ## About the project:
-The aim of this project was created multi step form with styling using Styled Components. Design is based on Neumorphism style. Creating this form I focus on writing a small components, which I can use to build my application and using in another project in the future - reusable code.
+The aim of the project was to create multi step form with some styling added to it by using Styled Components. Design part is based on Neumorphism style. When creating this form, I focused on writing a small components, which I can use to build my application and later to use them in another future projects - reusable code.
 
-My form contains 3 step, simulating register to the shop. Each step is in a separated files and inputs are created based on a JSON file. Additionally I am using information from those files to check data in the form. Functions and state are transferred to another component using props.
+My form contains 3 steps which simulate registering to the shop. Each step is in a separated files and inputs are created based on a JSON file. Additionally, I have used information from those files to check data in the form. Functions and state are transferred to another component using props.
 
 My form contains elements like:
 * inputs type: text, number
@@ -12,11 +12,11 @@ My form contains elements like:
 * buttons
 * progress bar
 
-The data in form are checked in two place:
+The form’s data is checked in two place:
 * when user clicked button "Next Step",
 * when user left active input - user see the error (if exist) immediately
 
-User can go to next step if all required data are correct. I wanted to limit as possible using if..else statement, so I used data from JSON file like: required: true and pattern to check data.
+User can go to next step if all required data are correct. My purpose was to limit as possible using if..else statement, so I used data from JSON file such as: required: true and pattern to check data.
 
 ```
 if(input.required){
@@ -59,15 +59,14 @@ npm start
 
 
 ## Solutions
-By creating this project I had an opportunity to practice/learn:
+When creating this project I had an opportunity to practice/learn:
 * using Styled Components
 * how to style inputs like radio and checkbox
-* how to style progress bar to works on each browser in a correct way
+* how to style progress bar to work on each browser in a correct way
 * creating inputs elements based on data in JSON file
 * another way to check if data in inputs is correct before sending the form
 * to build reusable code by splitting it in a small chunks
 * using enum object
-
 
 
 ### Project preview
@@ -79,7 +78,6 @@ Step two
 
 Step three
 ![Project-preview](./preview/screen3.png)
-
 
 
 ### Feel free to contact me:
