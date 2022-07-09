@@ -1,6 +1,17 @@
 # Multi Step Form - React
 
-## About the project:
+## Table of Contents
+1. [About the project](#about-the-project)
+2. [How to see it](#how-to-see-it)
+3. [Technologies](#technologies)
+4. [Solutions](#solutions)
+5. [Development](#development)
+6. [Project preview](#project-preview)
+7. [Contact](#feel-free-to-contact-me)
+8. [Sources](#sources)
+9. [Thanks](#thanks-for-project-and-support-to-Mateusz-Bogolubow)
+
+## About the project
 The aim of the project was to create multi step form with some styling added to it by using Styled Components. Design part is based on Neumorphism style. When creating this form, I focused on writing a small components, which I can use to build my application and later to use them in another future projects - reusable code.
 
 My form contains 3 steps which simulate registering to the shop. Each step is in a separated files and inputs are created based on a JSON file. Additionally, I have used information from those files to check data in the form. Functions and state are transferred to another component using props.
