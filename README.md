@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [About the project](#about-the-project)
-2. [How to see it](#how-to-use-it)
+2. [How to use it](#how-to-use-it)
 3. [Technologies](#technologies)
 4. [Solutions](#solutions)
 5. [Project preview](#project-preview)
